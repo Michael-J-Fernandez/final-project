@@ -1,0 +1,74 @@
+[
+    {
+        "level": "basic",
+        "topic": "tags",
+        "question": "<div></div>",
+        "answer": "div"
+    },
+    {
+        "level": "basic",
+        "topic": "tags",
+        "question": "<p></p>",
+        "answer": "p"
+    },
+    {
+        "level": "basic",
+        "topic": "tags",
+        "question": "<h1></h1>",
+        "answer": "h1"
+    },
+    {
+        "level": "basic",
+        "topic": "child",
+        "question": "<div>\n\t<div></div>\n</div>",
+        "answer": "div>div"
+    },
+    {
+        "level": "basic",
+        "topic": "child",
+        "question": "<nav>\n\t<ul>\n\t\t<li></li>\n\t</ul>\n</nav>",
+        "answer": "nav>ul>li"
+    },
+    {
+        "level": "basic",
+        "topic": "siblings",
+        "question": "<div></div>\n<div></div>",
+        "answer": "div+div"
+    },
+    {
+        "level": "basic",
+        "topic": "siblings",
+        "question": "<p></p>\n<p></p>",
+        "answer": "p+p"
+    },
+    {
+        "level": "basic",
+        "topic": "siblings",
+        "question": "<div>\n\t<p></p>\n\t<p></p>\n</div>",
+        "answer": "div>p+p"
+    },
+    {
+        "level": "basic",
+        "topic": "siblings",
+        "question": "<ul>\n\t<li></li>\n\t<li></li>\n\t<li></li>\n</ul>",
+        "answer": "ul>li+li+li"
+    },
+    {
+        "level": "basic",
+        "topic": "climb",
+        "question": "<div>\n\t<p></p>\n</div>\n<div>\n\t<p></p>\n</div>",
+        "answer": "div>p^div>p"
+    },
+    {
+        "level": "basic",
+        "topic": "climb",
+        "question": "<div>\n\t<p><span></span></p>\n\t<p><span></span></p>\n</div>",
+        "answer": "div>p>span^p>span"
+    },
+    {
+        "level": "basic",
+        "topic": "climb",
+        "question": "<section>\n\t<div>\n\t\t<p><span></span></p>\n\t\t<p><span></span></p>\n\t</div>\n\t<blockquote></blockquote>\n</section>",
+        "answer": "section>div>p>span^p>span^^blockquote"
+    }
+]

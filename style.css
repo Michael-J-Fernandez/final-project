@@ -1,0 +1,102 @@
+/* * {
+    text-align: center;
+} */
+
+/* div {
+    margin: 20px;
+} */
+
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+.question-display {
+    white-space: pre;
+    /* tab-size: ; */
+}
+
+#user-input {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    /* border: 2px solid red; */
+
+}
+
+.incorrect {
+    border: 2px solid red;
+}
+
+.incorrect:focus {
+    border: 2px solid red;
+}
+
+.app-area {
+    /* text-align: center; */
+    /* margin: ; */
+}
+
+.app-area > div {
+    margin: 20px;
+}
+
+
+/* SIDEBAR */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    padding: 3px 20px 3px 20px;
+    text-decoration: none;
+}
+
+.sidebar a.active {
+    background-color: darkgreen;
+    color: white;
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 100px;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebar a {
+        float: left;
+    }
+
+    div.content {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+    }
+}
+
