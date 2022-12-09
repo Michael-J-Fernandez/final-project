@@ -21,6 +21,7 @@ body {
     border-radius: 5px;
     padding: 5px;
     text-align: center;
+    width: 400px;
     /* border: 2px solid red; */
 
 }
@@ -34,8 +35,10 @@ body {
 }
 
 .app-area {
+    /* display: block;
+    align-self: center; */
     /* text-align: center; */
-    /* margin: ; */
+    /* margin: auto; */
 }
 
 .app-area > div {

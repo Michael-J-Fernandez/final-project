@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emmet-Type</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,32 +21,53 @@
 
 <!-- "tags", "child", "siblings", "climb", "group", "multiplication", "numbering", "class-id", "custom-attr", "text" -->
     <div class="sidebar">
-        <a class="topic" id="tags" href="#">tags</a>
-        <a class="topic" id="child" href="#">child</a>
-        <a class="topic" id="siblings" href="#">siblings</a>
-        <a class="topic" id="climb" href="#">climb</a>
-        <a class="topic" id="group" href="#">group</a>
-        <a class="topic" id="multiplication" href="#">multiplication</a>
-        <a class="topic" id="numbering" href="#">numbering</a>
-        <a class="topic" id="class-id" href="#">class-id</a>
-        <a class="topic" id="custom-attr" href="#">custom-attr</a>
-        <a class="topic" id="text" href="#">text</a>
+        <div id="topic-container">
+            <a class="topic active" id="tags" href="#">tags</a>
+            <a class="topic" id="child" href="#">child</a>
+            <a class="topic" id="siblings" href="#">siblings</a>
+            <a class="topic" id="climb" href="#">climb</a>
+            <a class="topic" id="group" href="#">group</a>
+            <a class="topic" id="multiplication" href="#">multiplication</a>
+            <a class="topic" id="numbering" href="#">numbering</a>
+            <a class="topic" id="class-id" href="#">class-id</a>
+            <a class="topic" id="custom-attr" href="#">custom-attr</a>
+            <a class="topic" id="text" href="#">text</a>
+            <a class="topic" id="implicit" href="#">implicit</a>
+        </div>
     </div>
+
+
 
     
     <div class="app-area content">
         <div class="question-area">ANSWER THIS QUESTION
-            <div class="question-display">
-
-<section>\n\t<div>\n\t\t<p><span></span></p>\n\t\t<p><span></span></p>\n\t</div>\n\t<blockquote></blockquote>\n</section>
-
-            </div>
+            <div class="question-display"></div>
         </div>
         <div id="result">Result: <span id="result-display"></span></div>
         <input type="text" name="user-input" id="user-input" autofocus="true">
+        <br>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="last btn btn-outline-secondary"><i class="bi bi-arrow-left-square"></i></button>
+
+            <button type="button" class="hint btn btn-outline-secondary"><i class="bi bi-question-square"></i></button>
+
+            <button type="button" class="next btn btn-outline-secondary"><i class="bi bi-arrow-right-square"></i></button>
+            </div>
     </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="main.js"></script>
     
 </body>
 </html>
+
+<div></div>
+<div></div>
+
+<div></div>
+<div></div>

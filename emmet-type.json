@@ -3,72 +3,210 @@
         "level": "basic",
         "topic": "tags",
         "question": "<div></div>",
-        "answer": "div"
+        "answer": ["div"]
     },
     {
         "level": "basic",
         "topic": "tags",
         "question": "<p></p>",
-        "answer": "p"
+        "answer": ["p"]
     },
     {
         "level": "basic",
         "topic": "tags",
         "question": "<h1></h1>",
-        "answer": "h1"
+        "answer": ["h1"]
     },
     {
         "level": "basic",
         "topic": "child",
         "question": "<div>\n\t<div></div>\n</div>",
-        "answer": "div>div"
+        "answer": ["div>div"]
     },
     {
         "level": "basic",
         "topic": "child",
         "question": "<nav>\n\t<ul>\n\t\t<li></li>\n\t</ul>\n</nav>",
-        "answer": "nav>ul>li"
+        "answer": ["nav>ul>li"]
     },
     {
         "level": "basic",
         "topic": "siblings",
         "question": "<div></div>\n<div></div>",
-        "answer": "div+div"
+        "answer": ["div+div", "div*2"]
     },
     {
         "level": "basic",
         "topic": "siblings",
         "question": "<p></p>\n<p></p>",
-        "answer": "p+p"
+        "answer": ["p+p", "p*2"]
     },
     {
         "level": "basic",
         "topic": "siblings",
         "question": "<div>\n\t<p></p>\n\t<p></p>\n</div>",
-        "answer": "div>p+p"
+        "answer": ["div>p+p", "div>p*2"]
     },
     {
         "level": "basic",
         "topic": "siblings",
         "question": "<ul>\n\t<li></li>\n\t<li></li>\n\t<li></li>\n</ul>",
-        "answer": "ul>li+li+li"
+        "answer": ["ul>li+li+li", "ul>li*3"]
     },
     {
         "level": "basic",
         "topic": "climb",
         "question": "<div>\n\t<p></p>\n</div>\n<div>\n\t<p></p>\n</div>",
-        "answer": "div>p^div>p"
+        "answer": ["div>p^div>p"]
     },
     {
         "level": "basic",
         "topic": "climb",
         "question": "<div>\n\t<p><span></span></p>\n\t<p><span></span></p>\n</div>",
-        "answer": "div>p>span^p>span"
+        "answer": ["div>p>span^p>span"]
     },
     {
         "level": "basic",
         "topic": "climb",
         "question": "<section>\n\t<div>\n\t\t<p><span></span></p>\n\t\t<p><span></span></p>\n\t</div>\n\t<blockquote></blockquote>\n</section>",
-        "answer": "section>div>p>span^p>span^^blockquote"
+        "answer": ["section>div>p>span^p>span^^blockquote"]
+    },
+    {
+        "level": "basic",
+        "topic": "group",
+        "question": "<div>\n\t<header>\n\t\t<ul>\n\t\t\t<li><a href=\"\"></a></li>\n\t\t\t<li><a href=\"\"></a></li>\n\t\t</ul>\n\t</header>\n\t<footer>\n\t\t<p></p>\n\t</footer>\n</div>",
+        "answer": ["div>(header>ul>li*2>a)+footer>p"]
+    },
+    {
+        "level": "basic",
+        "topic": "group",
+        "question": "<div>\n\t<dl>\n\t\t<dd></dd>\n\t\t<dt></dt>\n\t\t<dt></dt>\n\t\t<dd></dd>\n\t\t<dt></dt>\n\t\t<dd></dd>\n\t</dl>\n</div>\n<footer>\n\t<p></p>\n</footer>",
+        "answer": ["(div>dl>(dt+dd)*3)+footer>p"]
+    },
+    {
+        "level": "basic",
+        "topic": "multiplication",
+        "question": "<ul>\n\t<li></li>\n\t<li></li>\n\t<li></li>\n\t<li></li>\n\t<li></li>\n</ul>",
+        "answer": ["ul>li*5"]
+    },
+    {
+        "level": "basic",
+        "topic": "multiplication",
+        "question": "<section>\n\t<h1></h1>\n\t<p></p>\n\t<p></p>\n\t<p></p>\n</section>",
+        "answer": ["section>h1+p*3"]
+    },
+    {
+        "level": "basic",
+        "topic": "multiplication",
+        "question": "<nav>\n\t<div><a href=\"\"></a></div>\n\t<div><a href=\"\"></a></div>\n\t<div><a href=\"\"></a></div>\n\t<div><a href=\"\"></a></div>\n\t<div><a href=\"\"></a></div>\n</nav>",
+        "answer": ["nav>div*5>a"]
+    },
+    {
+        "level": "basic",
+        "topic": "numbering",
+        "question": "<ul>\n\t<li class=\"item1\"></li>\n\t<li class=\"item2\"></li>\n\t<li class=\"item3\"></li>\n\t<li class=\"item4\"></li>\n\t<li class=\"item5\"></li>\n</ul>",
+        "answer": ["ul>li.item$*5"]
+    },
+    {
+        "level": "basic",
+        "topic": "numbering",
+        "question": "<h1 title=\"item1\">Header 1</h1>\n<h2 title=\"item2\">Header 2</h2>\n<h3 title=\"item3\">Header 3</h3>",
+        "answer": ["h$[title=item$]{Header $}*3"]
+    },
+    {
+        "level": "basic",
+        "topic": "numbering",
+        "question": "<ul>\n\t<li class=\"item001\"></li>\n\t<li class=\"item002\"></li>\n\t<li class=\"item003\"></li>\n\t<li class=\"item004\"></li>\n\t<li class=\"item005\"></li>\n</ul>",
+        "answer": ["ul>li.item$$$*5"]
+    },
+    {
+        "level": "basic",
+        "topic": "numbering",
+        "question": "<ul>\n\t<li class=\"item5\"></li>\n\t<li class=\"item4\"></li>\n\t<li class=\"item3\"></li>\n\t<li class=\"item2\"></li>\n\t<li class=\"item1\"></li>\n</ul>",
+        "answer": ["ul>li.item$@-*5"]
+    },
+    {
+        "level": "basic",
+        "topic": "numbering",
+        "question": "<ul>\n\t<li class=\"item3\"></li>\n\t<li class=\"item4\"></li>\n\t<li class=\"item5\"></li>\n\t<li class=\"item6\"></li>\n\t<li class=\"item7\"></li>\n</ul>",
+        "answer": ["ul>li.item$@3*5"]
+    },
+    {
+        "level": "basic",
+        "topic": "class-id",
+        "question": "<div id=\"header\"></div>",
+        "answer": ["#header"]
+    },
+    {
+        "level": "basic",
+        "topic": "class-id",
+        "question": "<div class=\"title\"></div>",
+        "answer": [".title"]
+    },
+    {
+        "level": "basic",
+        "topic": "class-id",
+        "question": "<form id=\"search\" class=\"wide\"></form>",
+        "answer": ["form#search.wide"]
+    },
+    {
+        "level": "basic",
+        "topic": "class-id",
+        "question": "<p class=\"class1 class2 class3\"></p>",
+        "answer": ["p.class1.class2.class3"]
+    },
+    {
+        "level": "basic",
+        "topic": "custom-attr",
+        "question": "<p title=\"Hello world\"></p>",
+        "answer": ["p[title=\"Hello world\"]"]
+    },
+    {
+        "level": "basic",
+        "topic": "custom-attr",
+        "question": "<td rowspan=\"2\" colspan=\"3\" title=\"\"></td>",
+        "answer": ["td[rowspan=2 colspan=3 title]"]
+    },
+    {
+        "level": "basic",
+        "topic": "custom-attr",
+        "question": "<div a=\"value1\" b=\"value2\"></div>",
+        "answer": ["[a='value1' b=\"value2\"]"]
+    },
+    {
+        "level": "basic",
+        "topic": "text",
+        "question": "<a href=\"\">Click me</a>",
+        "answer": ["a{Click me}"]
+    },
+    {
+        "level": "basic",
+        "topic": "text",
+        "question": "<p>Click <a href=\"\">here</a> to continue</p>",
+        "answer": ["p>{Click }+a{here}+{ to continue}"]
+    },
+    {
+        "level": "basic",
+        "topic": "implicit",
+        "question": "<div class=\"class\"></div>",
+        "answer": [".class"]
+    },
+    {
+        "level": "basic",
+        "topic": "implicit",
+        "question": "<em><span class=\"class\"></span></em>",
+        "answer": ["em>.class"]
+    },
+    {
+        "level": "basic",
+        "topic": "implicit",
+        "question": "<ul>\n\t<li class=\"class\"></li>\n</ul>",
+        "answer": ["ul>.class"]
+    },
+    {
+        "level": "basic",
+        "topic": "implicit",
+        "question": "<table>\n\t<tr class=\"row\">\n\t\t<td class=\"col\"></td>\n\t</tr>\n</table>",
+        "answer": ["table>.row>.col"]
     }
 ]

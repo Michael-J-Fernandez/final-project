@@ -1,124 +1,151 @@
 let questionDisplay = document.querySelector('.question-display');
-let userAnswer = document.querySelector('#user-input');
+let userInput = document.querySelector('#user-input');
 let result = document.querySelector('#result-display');
 let practiceTopics = document.querySelectorAll('.topic');
+let topicContainer = document.querySelector('#topic-container');
+let lastButton = document.querySelector('.last');
+let nextButton = document.querySelector('.next');
+let hint = document.querySelector('.hint');
+let active = document.querySelector('.active');
 // let  = document.querySelector('');
 
 
 let topic = 'tags';
+let groupedData = '';
+let i = 0;
+let questionObj = '';
+let question = '';
+let answer = [];
+
+hint.addEventListener('click', () => {
+    console.log(userInput.value);
+    userInput.value = "";
+    userInput.setAttribute('placeholder', answer[0])
+})
+
+hint.addEventListener('blur', () => {
+    userInput.removeAttribute('placeholder');
+})
 
 let readEmmetTypeData = async () => {
     
     let rawEmmetData = await fetch('/emmet-type.json');
     let data = await rawEmmetData.json();
-    let groupedData = _.groupBy(data, 'topic');
+    groupedData = _.groupBy(data, 'topic');
     
-
-
-    let i = 0;
-    // getNewQuestion();
-    let questionObj = groupedData[topic][i];
-    let question = questionObj['question'];
-    let answer = questionObj['answer'];
+    i = 0;
+    questionObj = groupedData[topic][i];
+    question = questionObj['question'];
+    answer = questionObj['answer'];
     questionDisplay.innerText = question;
-
+    
     console.log(answer);
-
-    practiceTopics.forEach(item => {
-        item.addEventListener('click', () => {
-            
-            // removes all .active
-            practiceTopics.forEach(item => {
-                item.classList.remove('active');
-            })
-            // adds .active to current
-            item.classList.add('active');
-            
-            
-            
-            topic = item.id;
-            
-            readEmmetTypeData();
-        })
-    })
-
-    userAnswer.addEventListener('keydown', (event) => {
-
-        result.innerText = "";
-
-        // for (let i = 0; i < groupedData[topic].length-1; i++) {
-
-            if (event.keyCode == 9) {
-                event.preventDefault();
-                result.innerText = "";
-    
-                if (userAnswer.value === answer) {
-                    
-                    if (i !== groupedData[topic].length-1) {
-                        // i++;
-                        // getNewQuestion();
-                        
-                        i ++;
-                        result.innerText = "Correct!";
-                        questionObj = groupedData[topic][i];
-                        question = questionObj['question'];
-                        answer = questionObj['answer'];
-                        questionDisplay.innerText = question;
-                        console.log(answer);
-                        userAnswer.value = "";
-    
-                    } else {
-                        i = 0;
-                        result.innerText = "Correct!";
-                        questionObj = groupedData[topic][i];
-                        question = questionObj['question'];
-                        answer = questionObj['answer'];
-                        questionDisplay.innerText = question;
-                        console.log(answer);
-                        userAnswer.value = "";
-
-                    }
-    
-                } else {
-                    result.innerText = "Incorrect";
-                    // userAnswer.classList.add('incorrect');
-                }
-            }
-            
-        // }
-
-
-    })
 }
-
-
-// let topic = 'tags';
 readEmmetTypeData();
 
 
 
+// selects topic
+practiceTopics.forEach(item => {
+    item.addEventListener('click', () => {
+
+        // switches .active to current element
+        practiceTopics.forEach(item => {
+            item.classList.remove('active');
+        })
+        // active.classList.toggle('active');
+        item.classList.add('active');
+
+        topic = item.id;
+        console.log(topic);
+        result.innerText = "";
+        readEmmetTypeData();
+    })
+})
 
 
 
 
+userInput.addEventListener('keydown', (event) => {
+    result.innerText = "";
+    
+    if (event.keyCode == 9) {
+        event.preventDefault();
+        // result.innerText = "";
+        console.log("Answer is: " + answer);
+        console.log("You typed: " + userInput.value);
+        
+        if (answer.includes(userInput.value)) {
+            
+            result.innerText = "Correct!";
+            
+            if (i === groupedData[topic].length-1) {
+                i = 0;
+            } else {
+                i++;
+            }
+            
+            questionObj = groupedData[topic][i];
+            question = questionObj['question'];
+            answer = questionObj['answer'];
+            questionDisplay.innerText = question;
+            userInput.value = "";
+            console.log("New answer is: " + answer);
+            
+            
+        } else if (!answer.includes(userInput.value)) {
+            result.innerText = "Incorrect";
+            // userInput.classList.add('incorrect');
+        }
+    }
+})
 
 
 
-// function getNewQuestion(){
 
-//     questionObj = groupedData[topic][i];
-//     question = questionObj['question'];
-//     answer = questionObj['answer'];
-//     questionDisplay.innerText = question;
-//     userAnswer.value = "";
-// }
+// last/next buttons
+lastButton.addEventListener('click', () => {
+    if (i === 0){
+        i = 0;
+    } else if (i !== 0){
+        i--;
+    }
 
+    questionObj = groupedData[topic][i];
+    question = questionObj['question'];
+    answer = questionObj['answer'];
+    questionDisplay.innerText = question;
+    userInput.value = "";
+    
+    console.log("New answer is: " + answer);
+})
 
+nextButton.addEventListener('click', () => {
+    if (i === groupedData[topic].length-1){
+        i = groupedData[topic].length-1;
+
+    } else if (i !== groupedData[topic].length-1){
+        i++;
+    }
+
+    questionObj = groupedData[topic][i];
+    question = questionObj['question'];
+    answer = questionObj['answer'];
+    questionDisplay.innerText = question;
+    userInput.value = "";
+    
+    console.log("New answer is: " + answer);
+})
 
 
 
 
 /* ----- TAGS FOR LATER
+
+
+
+
+
 
 
     {
