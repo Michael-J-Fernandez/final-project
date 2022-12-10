@@ -1,5 +1,6 @@
 let questionDisplay = document.querySelector('.question-display');
-let userInput = document.querySelector('#user-input');
+let userInput = document.querySelector('.user-input');
+let userInputFocus = document.querySelector('#user-input:focus');
 let result = document.querySelector('#result-display');
 let practiceTopics = document.querySelectorAll('.topic');
 let topicContainer = document.querySelector('#topic-container');
@@ -9,24 +10,17 @@ let hint = document.querySelector('.hint');
 let active = document.querySelector('.active');
 // let  = document.querySelector('');
 
-
 let topic = 'tags';
 let groupedData = '';
 let i = 0;
 let questionObj = '';
 let question = '';
 let answer = [];
+let userInputHold = '';
+// let lastQuestion = groupedData[topic].length-1;
 
-hint.addEventListener('click', () => {
-    console.log(userInput.value);
-    userInput.value = "";
-    userInput.setAttribute('placeholder', answer[0])
-})
 
-hint.addEventListener('blur', () => {
-    userInput.removeAttribute('placeholder');
-})
-
+// --- DATA RETIREVAL/ORGANIZATION ---
 let readEmmetTypeData = async () => {
     
     let rawEmmetData = await fetch('/emmet-type.json');
@@ -38,26 +32,28 @@ let readEmmetTypeData = async () => {
     question = questionObj['question'];
     answer = questionObj['answer'];
     questionDisplay.innerText = question;
+    userInput.value = "";
     
-    console.log(answer);
+    // console.log(answer);
 }
 readEmmetTypeData();
 
 
 
-// selects topic
+// --- TOPIC SELECTION ---
 practiceTopics.forEach(item => {
     item.addEventListener('click', () => {
 
-        // switches .active to current element
+        // switches .active to selected topic
         practiceTopics.forEach(item => {
             item.classList.remove('active');
         })
-        // active.classList.toggle('active');
         item.classList.add('active');
 
+        // loads data for current topic
+        userInputHold = "";
+        userInput.value = "";
         topic = item.id;
-        console.log(topic);
         result.innerText = "";
         readEmmetTypeData();
     })
@@ -65,37 +61,78 @@ practiceTopics.forEach(item => {
 
 
 
+// --- HINTS ---
+hint.addEventListener('click', () => {
+
+    if (!userInput.hasAttribute('placeholder')) {
+        if (userInput.value !== '') {
+            userInputHold = userInput.value;
+        }
+        userInput.value = "";
+        userInput.setAttribute('placeholder', answer[0]);
+
+    } else {
+        userInput.removeAttribute('placeholder');
+        userInput.value = userInputHold;
+    }
+
+    console.log("Input hold: " + userInputHold);
+})
+
+hint.addEventListener('blur', () => {
+    userInput.removeAttribute('placeholder');
+    userInput.value = userInputHold;
+})
+
+
+
+
+// --- INPUT COLOR STATUS ---
+userInput.addEventListener('input', () => {
+    console.log(answer.includes(userInput.value));
+
+    if (userInput.value === '') {
+        userInput.classList.remove('typing');
+        userInput.classList.remove('correct');
+        userInput.classList.remove('incorrect');
+        
+    } else if (!answer.includes(userInput.value)){
+        userInput.classList.add('typing');
+        userInput.classList.remove('correct');
+        userInput.classList.remove('incorrect');
+
+    } else {
+        userInput.classList.add('correct');
+        userInput.classList.remove('typing');
+        userInput.classList.remove('incorrect');
+    }
+})
+
 
 userInput.addEventListener('keydown', (event) => {
     result.innerText = "";
     
     if (event.keyCode == 9) {
         event.preventDefault();
-        // result.innerText = "";
-        console.log("Answer is: " + answer);
-        console.log("You typed: " + userInput.value);
         
         if (answer.includes(userInput.value)) {
             
             result.innerText = "Correct!";
+            userInput.classList.remove('correct');
+            userInput.classList.remove('incorrect');
+            userInput.classList.remove('typing');
             
-            if (i === groupedData[topic].length-1) {
-                i = 0;
-            } else {
-                i++;
-            }
+            i === groupedData[topic].length-1 ? i = 0 : i++;
             
             questionObj = groupedData[topic][i];
             question = questionObj['question'];
             answer = questionObj['answer'];
             questionDisplay.innerText = question;
             userInput.value = "";
-            console.log("New answer is: " + answer);
-            
             
         } else if (!answer.includes(userInput.value)) {
             result.innerText = "Incorrect";
-            // userInput.classList.add('incorrect');
+            userInput.classList.add('incorrect');
         }
     }
 })
@@ -103,39 +140,40 @@ userInput.addEventListener('keydown', (event) => {
 
 
 
-// last/next buttons
+
+
+
+
+
+// --- LAST / NEXT BUTTON ---
 lastButton.addEventListener('click', () => {
-    if (i === 0){
-        i = 0;
-    } else if (i !== 0){
-        i--;
-    }
+
+    i === 0 ? i = 0 : i--;
 
     questionObj = groupedData[topic][i];
     question = questionObj['question'];
     answer = questionObj['answer'];
     questionDisplay.innerText = question;
     userInput.value = "";
-    
-    console.log("New answer is: " + answer);
 })
 
 nextButton.addEventListener('click', () => {
-    if (i === groupedData[topic].length-1){
-        i = groupedData[topic].length-1;
 
-    } else if (i !== groupedData[topic].length-1){
-        i++;
-    }
+    i === groupedData[topic].length-1 ? i = groupedData[topic].length-1 : i++;
 
     questionObj = groupedData[topic][i];
     question = questionObj['question'];
     answer = questionObj['answer'];
     questionDisplay.innerText = question;
     userInput.value = "";
-    
-    console.log("New answer is: " + answer);
 })
+
+
+
+
+
+
+
 
 
 
