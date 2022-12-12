@@ -22,3 +22,7 @@ This is an application to learn the basics of using Emmet abbreviation for codin
 ## Hints
 
 * Click on "?" to show the answer to the current problem.
+
+## Current known bugs
+
+* Some challenges do not have all possible abbreviations as part of their answers list. (Not really a bug, but something I'm working on!)

@@ -74,7 +74,7 @@
         "topic": "climb",
         "instructions": "Use ^ to climb up.\nEx.: outerTag>childTag^(to climb out)outerTag>childTag\nRemember to press \"?\" for hints!",
         "question": "<div>\n\t<p></p>\n</div>\n<div>\n\t<p></p>\n</div>",
-        "answer": ["div>p^div>p"]
+        "answer": ["div>p^div>p", "div*2>p"]
     },
     {
         "level": "basic",

@@ -102,6 +102,9 @@ userInput.addEventListener('input', () => {
     }
 })
 
+
+
+// --- ANSWER VALIDATION ---
 userInput.addEventListener('keydown', (event) => {
     result.innerText = "";
     result.classList.remove('incorrect', 'correct');
