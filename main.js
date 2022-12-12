@@ -87,7 +87,7 @@ hint.addEventListener('blur', () => {
 
 // --- INPUT COLOR STATUS ---
 userInput.addEventListener('input', () => {
-    console.log(answer.includes(userInput.value));
+    // console.log(answer.includes(userInput.value));
 
     if (userInput.value === '') {
         userInput.classList.remove('typing', 'correct', 'incorrect');
@@ -125,6 +125,7 @@ userInput.addEventListener('keydown', (event) => {
             questionDisplay.innerText = question;
             instructionsDisplay.innerText = instructions;
             userInput.value = "";
+            console.log(answer);
             
         } else if (!answer.includes(userInput.value)) {
             userInput.classList.add('incorrect');
@@ -155,12 +156,12 @@ function refreshQuestionDisplay(){
     instructions = questionObj['instructions'];
     questionDisplay.innerText = question;
     instructionsDisplay.innerText = instructions;
-    console.log("Instructions are: " + instructions);
     userInput.value = "";
     result.innerText = "";
     hint.classList.remove('hint-incorrect');
     result.classList.remove('incorrect', 'correct');
     userInput.classList.remove('typing', 'correct', 'incorrect');
+    console.log(answer);
 
 }
 

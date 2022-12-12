@@ -2,6 +2,10 @@
 
 This is an application to learn the basics of using Emmet abbreviation for coding HTML.
 
+## Instructions
+
+* Instructions for each question are displayed on top of the current question, highlighted in dark-yellow color.
+
 ## Topics
 
 * **Click on a topic to practice**
