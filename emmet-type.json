@@ -4,7 +4,7 @@
         "topic": "home",
         "instructions": "Welcome to Emmet-Type!",
         "question": "1. Select a topic to learn.\n2. Type in the abbreviation in the text box below.\n3. Press the tab key to enter your answer.\n4. Press <-- and --> to cycle through the problems.\n5. Press \"?\" to show hints.",
-        "answer": []
+        "answer": ["Select a topic to start learning!"]
     },
     {
         "level": "basic",
